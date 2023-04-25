@@ -1,0 +1,27 @@
+### Get reservations
+GET {{url}}/reservations
+
+### Get reservation
+GET {{url}}/reservations/2
+
+### add reservation
+POST {{url}}/reservations
+Content-Type: application/json
+
+{
+  "parkingSpotName": "P2",
+  "employeeName": "Joe Doe",
+  "licencePlate": "XYZ"
+}
+
+### edit reservation
+PUT {{url}}/reservations/1
+Content-Type: application/json
+
+{
+  "licencePlate": "XYZZ"
+}
+
+### Delete reservation
+DELETE {{url}}/reservations/1
+
