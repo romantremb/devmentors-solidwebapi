@@ -10,6 +10,7 @@ Content-Type: application/json
 
 {
   "parkingSpotName": "P2",
+  "date": "2023-04-29",
   "employeeName": "Joe Doe",
   "licencePlate": "XYZ"
 }
