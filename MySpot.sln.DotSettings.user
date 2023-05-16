@@ -1,0 +1,8 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=46da830b_002D3b39_002D4b70_002D82ac_002D7af56763f82f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="given_invalid_date_add_reservation_should_fail" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::2CE0EA12-BA5B-4F5E-9342-23312C9FA84C::net7.0::MySpot.Tests.Unit.Entities.WeeklyParkingSpotTests.given_invalid_date_add_reservation_should_fail&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::2CE0EA12-BA5B-4F5E-9342-23312C9FA84C::net7.0::MySpot.Tests.Unit.Entities.WeeklyParkingSpotTests.given_reservation_for_already_existing_date_add_reservation_should_fail&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::2CE0EA12-BA5B-4F5E-9342-23312C9FA84C::net7.0::MySpot.Tests.Unit.Entities.WeeklyParkingSpotTests.given_reservation_for_not_taken_date_add_reservation_should_succeed&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
