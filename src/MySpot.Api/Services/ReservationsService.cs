@@ -6,7 +6,7 @@ using MySpot.Api.ValueObjects;
 
 namespace MySpot.Api.Services;
 
-public sealed class ReservationsService
+public sealed class ReservationsService : IReservationsService
 {
     private readonly IClock _clock;
 

@@ -2,7 +2,7 @@
 GET {{url}}/reservations
 
 ### Get reservation
-GET {{url}}/reservations/2
+GET {{url}}/reservations/00000000-0000-0000-0000-000000000001
 
 ### add reservation
 POST {{url}}/reservations
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### edit reservation
-PUT {{url}}/reservations/1
+PUT {{url}}/reservations/00000000-0000-0000-0000-000000000001
 Content-Type: application/json
 
 {
