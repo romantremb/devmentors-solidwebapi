@@ -1,7 +1,7 @@
-﻿using MySpot.Api.Commands;
-using MySpot.Api.Entities;
-using MySpot.Api.Services;
-using MySpot.Api.ValueObjects;
+﻿using MySpot.Application.Commands;
+using MySpot.Application.Services;
+using MySpot.Core.Repositories;
+using MySpot.Infrastructure.Repositories;
 using MySpot.Tests.Unit.Shared;
 using Shouldly;
 
@@ -45,20 +45,14 @@ public class ReservationsServiceTests
     }
     
     private readonly ReservationsService _service;
+    private readonly IWeeklyParkingSpotRepository _weeklyParkingSpotRepository;
     private readonly IClock _clock;
     
     public ReservationsServiceTests()
     {
         _clock = new TestClock();
-        var weeklyParkingSpots = new WeeklyParkingSpot[]
-        {
-            new(Guid.Parse("00000000-0000-0000-0000-000000000001"), new Week(_clock.Current()), "P1"),
-            new(Guid.Parse("00000000-0000-0000-0000-000000000002"), new Week(_clock.Current()), "P2"),
-            new(Guid.Parse("00000000-0000-0000-0000-000000000003"), new Week(_clock.Current()), "P3"),
-            new(Guid.Parse("00000000-0000-0000-0000-000000000004"), new Week(_clock.Current()), "P4"),
-            new(Guid.Parse("00000000-0000-0000-0000-000000000005"), new Week(_clock.Current()), "P5")
-        };
-        _service = new ReservationsService(_clock, weeklyParkingSpots);
+        _weeklyParkingSpotRepository = new InMemoryWeeklyParkingSpotRepository(_clock);
+        _service = new ReservationsService(_clock, _weeklyParkingSpotRepository);
     }
     
 }

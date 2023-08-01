@@ -1,10 +1,7 @@
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using MySpot.Api.Commands;
-using MySpot.Api.DTO;
-using MySpot.Api.Entities;
-using MySpot.Api.Services;
-using MySpot.Api.ValueObjects;
+using MySpot.Application.Commands;
+using MySpot.Application.DTO;
+using MySpot.Application.Services;
 
 namespace MySpot.Api.Controllers;
 
@@ -51,10 +48,6 @@ public class ReservationsController : ControllerBase
     [HttpPut("{id:guid}")]
     public ActionResult Put(Guid id, ChangeReservationLicencePlate command)
     {
-        var t = string.Join(Environment.NewLine, Request.Headers.Select(c => $"{c.Key}: {c.Value}"));
-        var url1 = new Uri(Request.GetDisplayUrl());
-        var url2 = Request.GetEncodedUrl();
-        ;
         var succeeded = _reservationsService.Update(command with { ReservationId = id });
         if (!succeeded)
         {

@@ -1,4 +1,4 @@
-﻿using MySpot.Api.Services;
+﻿using MySpot.Application.Services;
 
 namespace MySpot.Tests.Unit.Shared;
 
