@@ -3,7 +3,7 @@ using MySpot.Core.Entities;
 using MySpot.Core.Repositories;
 using MySpot.Core.ValueObjects;
 
-namespace MySpot.Infrastructure.Repositories;
+namespace MySpot.Infrastructure.DAL.Repositories;
 
 internal sealed class InMemoryWeeklyParkingSpotRepository : IWeeklyParkingSpotRepository
 {
@@ -22,6 +22,10 @@ internal sealed class InMemoryWeeklyParkingSpotRepository : IWeeklyParkingSpotRe
     }
 
     public IEnumerable<WeeklyParkingSpot> GetAll() => _weeklyParkingSpots;
+    public IEnumerable<WeeklyParkingSpot> GetByWeek(Week week)
+    {
+        throw new NotImplementedException();
+    }
 
     public WeeklyParkingSpot Get(ParkingSpotId id) => _weeklyParkingSpots.SingleOrDefault(x => x.Id == id);
 
