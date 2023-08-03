@@ -10,9 +10,9 @@ Content-Type: application/json
 
 {
   "parkingSpotId": "00000000-0000-0000-0000-000000000001",
-  "date": "2023-04-29",
+  "date": "2023-08-04",
   "employeeName": "Joe Doe",
-  "licencePlate": "XYZ"
+  "licencePlate": "XYZ123"
 }
 
 ### edit reservation

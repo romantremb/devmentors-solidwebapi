@@ -49,6 +49,8 @@ internal sealed class ReservationsService : IReservationsService
             var reservation = new Reservation(reservationId, employeeName, licencePlate, new Date(date));
         
             weeklyParkingSpot.AddReservation(reservation, new Date(CurrentDate()));
+            _weeklyParkingSpotRepository.Update(weeklyParkingSpot);
+            
             return reservation.Id;
         }
         catch (CustomException)

@@ -14,7 +14,7 @@ internal sealed class WeeklyParkingSpotConfiguration : IEntityTypeConfiguration<
             .HasConversion(x => x.Value, x => new ParkingSpotId(x));
         builder.Property(x => x.Week)
             .IsRequired()
-            .HasConversion(x => x.From.Value, x => new Week(x));
+            .HasConversion(x => x.To.Value, x => new Week(x));
         builder.Property(x => x.Name)
             .IsRequired()
             .HasConversion(x => x.Value, x => new ParkingSpotName(x));
