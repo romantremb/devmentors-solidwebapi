@@ -16,31 +16,31 @@ internal sealed class PostgresWeeklyParkingSpotRepository : IWeeklyParkingSpotRe
         _weeklyParkingSpots = dbContext.WeeklyParkingSpots;
     }
     
-    public IEnumerable<WeeklyParkingSpot> GetAll() 
-        => _weeklyParkingSpots
+    public async Task<IEnumerable<WeeklyParkingSpot>> GetAllAsync() 
+        => await _weeklyParkingSpots
             .Include(x => x.Reservations)
-            .ToList();
+            .ToListAsync();
 
-    public IEnumerable<WeeklyParkingSpot> GetByWeek(Week week)
-        => _weeklyParkingSpots
+    public async Task<IEnumerable<WeeklyParkingSpot>> GetByWeekAsync(Week week)
+        => await _weeklyParkingSpots
             .Include(x => x.Reservations)
             .Where(x => x.Week == week)
-            .ToList();
+            .ToListAsync();
 
-    public WeeklyParkingSpot Get(ParkingSpotId id)
-        => _weeklyParkingSpots
+    public async Task<WeeklyParkingSpot> GetAsync(ParkingSpotId id)
+        => await _weeklyParkingSpots
             .Include(x => x.Reservations)
-            .SingleOrDefault(x => x.Id == id);
+            .SingleOrDefaultAsync(x => x.Id == id);
 
-    public void Add(WeeklyParkingSpot weeklyParkingSpot)
+    public async Task AddAsync(WeeklyParkingSpot weeklyParkingSpot)
     {
         _weeklyParkingSpots.Add(weeklyParkingSpot);
-        _dbContext.SaveChanges();
+        await _dbContext.SaveChangesAsync();
     }
 
-    public void Update(WeeklyParkingSpot weeklyParkingSpot)
+    public async Task UpdateAsync(WeeklyParkingSpot weeklyParkingSpot)
     {
         _weeklyParkingSpots.Update(weeklyParkingSpot);
-        _dbContext.SaveChanges();
+        await _dbContext.SaveChangesAsync();
     }
 }

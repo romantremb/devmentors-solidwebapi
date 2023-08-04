@@ -5,9 +5,9 @@ namespace MySpot.Core.Repositories;
 
 public interface IWeeklyParkingSpotRepository
 {
-    IEnumerable<WeeklyParkingSpot> GetAll();
-    IEnumerable<WeeklyParkingSpot> GetByWeek(Week week);
-    WeeklyParkingSpot Get(ParkingSpotId id);
-    void Add(WeeklyParkingSpot weeklyParkingSpot);
-    void Update(WeeklyParkingSpot weeklyParkingSpot);
+    Task<IEnumerable<WeeklyParkingSpot>> GetAllAsync();
+    Task<IEnumerable<WeeklyParkingSpot>> GetByWeekAsync(Week week);
+    Task<WeeklyParkingSpot> GetAsync(ParkingSpotId id);
+    Task AddAsync(WeeklyParkingSpot weeklyParkingSpot);
+    Task UpdateAsync(WeeklyParkingSpot weeklyParkingSpot);
 }
