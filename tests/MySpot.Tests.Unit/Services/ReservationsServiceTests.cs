@@ -15,7 +15,7 @@ public class ReservationsServiceTests
         var command = new CreateReservation(Guid.Parse("00000000-0000-0000-0000-000000000001"), 
             Guid.NewGuid(), "Joe Doe", "XYZ123", _clock.Current().AddDays(1));
 
-        var reservationId = await _service.CreateAsync(command);
+        await _service.CreateAsync(command);
 
         reservationId.ShouldNotBeNull();
         reservationId.Value.ShouldBe(command.ReservationId);
