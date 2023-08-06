@@ -1,6 +1,8 @@
 ﻿using MySpot.Application.Commands;
 using MySpot.Application.DTO;
 using MySpot.Application.Exceptions;
+using MySpot.Core.Abstractions;
+using MySpot.Core.DomainServices;
 using MySpot.Core.Entities;
 using MySpot.Core.Exceptions;
 using MySpot.Core.Repositories;
@@ -12,11 +14,16 @@ internal sealed class ReservationsService : IReservationsService
 {
     private readonly IClock _clock;
     private readonly IWeeklyParkingSpotRepository _weeklyParkingSpotRepository;
+    private readonly IParkingReservationService _parkingReservationService;
 
-    public ReservationsService(IClock clock, IWeeklyParkingSpotRepository weeklyParkingSpotRepository)
+    public ReservationsService(
+        IClock clock, 
+        IWeeklyParkingSpotRepository weeklyParkingSpotRepository,
+        IParkingReservationService parkingReservationService)
     {
         _clock = clock;
         _weeklyParkingSpotRepository = weeklyParkingSpotRepository;
+        _parkingReservationService = parkingReservationService;
     }
 
     public async Task<IEnumerable<ReservationDto>> GetAllWeeklyAsync() 
@@ -38,17 +45,21 @@ internal sealed class ReservationsService : IReservationsService
         var (id, reservationId, employeeName, licencePlate, date) = command;
         
         var parkingSpotId = new ParkingSpotId(id);
-        var weeklyParkingSpot = await _weeklyParkingSpotRepository.GetAsync(parkingSpotId);
+        var week = new Week(_clock.Current());
+        var weeklyParkingSpots = (await _weeklyParkingSpotRepository.GetByWeekAsync(week)).ToList();
+        var parkingSpotToReserve = weeklyParkingSpots.SingleOrDefault(x => x.Id == parkingSpotId);
         
-        if (weeklyParkingSpot is null)
+        if (parkingSpotToReserve is null)
         {
             throw new WeeklyParkingSpotNotFoundException(parkingSpotId);
         }
         
         var reservation = new Reservation(reservationId, employeeName, licencePlate, new Date(date));
         
-        weeklyParkingSpot.AddReservation(reservation, new Date(CurrentDate()));
-        await _weeklyParkingSpotRepository.UpdateAsync(weeklyParkingSpot);
+        _parkingReservationService.ReserveSpotForVehicle(weeklyParkingSpots,  JobTitle.Employee, 
+            parkingSpotToReserve, reservation);
+        
+        await _weeklyParkingSpotRepository.UpdateAsync(parkingSpotToReserve);
     }
 
     public async Task UpdateAsync(ChangeReservationLicencePlate command)

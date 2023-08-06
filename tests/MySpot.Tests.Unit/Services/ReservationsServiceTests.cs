@@ -1,5 +1,6 @@
 ﻿using MySpot.Application.Commands;
 using MySpot.Application.Services;
+using MySpot.Core.Abstractions;
 using MySpot.Core.Repositories;
 using MySpot.Infrastructure.DAL.Repositories;
 using MySpot.Tests.Unit.Shared;
