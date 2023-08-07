@@ -17,8 +17,8 @@ public sealed class ParkingReservationService : IParkingReservationService
         _clock = clock;
     }
     
-    public void ReserveSpotForVehicle(IEnumerable<WeeklyParkingSpot> allParkingSpots, JobTitle jobTitle, WeeklyParkingSpot parkingSpotToReserve,
-        Reservation reservation)
+    public void ReserveSpotForVehicle(IEnumerable<WeeklyParkingSpot> allParkingSpots, JobTitle jobTitle,
+        WeeklyParkingSpot parkingSpotToReserve, VehicleReservation reservation)
     {
         var parkingSpotId = parkingSpotToReserve.Id;
         var policy = _policies.SingleOrDefault(x => x.CanBeApplied(jobTitle));
@@ -34,5 +34,15 @@ public sealed class ParkingReservationService : IParkingReservationService
         }
         
         parkingSpotToReserve.AddReservation(reservation, new Date(_clock.Current()));
+    }
+
+    public void ReserveParkingForCleaning(IEnumerable<WeeklyParkingSpot> allParkingSpots, Date date)
+    {
+        foreach (var parkingSpot in allParkingSpots)
+        {
+            var reservationsForSameDate = parkingSpot.Reservations.Where(x => x.Date == date);
+            parkingSpot.RemoveReservations(reservationsForSameDate);
+            parkingSpot.AddReservation(new CleaningReservation(ReservationId.Create(), date), new Date(_clock.Current()));
+        }
     }
 }

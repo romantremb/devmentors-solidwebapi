@@ -4,15 +4,23 @@ GET {{url}}/reservations
 ### Get reservation
 GET {{url}}/reservations/00000000-0000-0000-0000-000000000001
 
-### add reservation
-POST {{url}}/reservations
+### reserve for vehicle
+POST {{url}}/reservations/vehicle
 Content-Type: application/json
 
 {
   "parkingSpotId": "00000000-0000-0000-0000-000000000001",
-  "date": "2023-08-04",
+  "date": "2023-08-08",
   "employeeName": "Joe Doe",
   "licencePlate": "XYZ123"
+}
+
+### reserve for cleaning
+POST {{url}}/reservations/cleaning
+Content-Type: application/json
+
+{
+  "date": "2023-08-08"
 }
 
 ### edit reservation
