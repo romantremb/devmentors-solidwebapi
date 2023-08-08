@@ -41,7 +41,7 @@ internal sealed class ReservationsService : IReservationsService
 
     public async Task ReserveForVehicleAsync(ReserveParkingSpotForVehicle command)
     {
-        var (id, reservationId, employeeName, licencePlate, date) = command;
+        var (id, reservationId, employeeName, licencePlate, capacity, date) = command;
         
         var parkingSpotId = new ParkingSpotId(id);
         var week = new Week(_clock.Current());
@@ -53,7 +53,7 @@ internal sealed class ReservationsService : IReservationsService
             throw new WeeklyParkingSpotNotFoundException(parkingSpotId);
         }
         
-        var reservation = new VehicleReservation(reservationId, employeeName, licencePlate, new Date(date));
+        var reservation = new VehicleReservation(reservationId, employeeName, licencePlate, capacity, new Date(date));
         
         _parkingReservationService.ReserveSpotForVehicle(weeklyParkingSpots,  JobTitle.Employee, 
             parkingSpotToReserve, reservation);
