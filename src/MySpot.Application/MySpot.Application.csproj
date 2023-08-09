@@ -8,5 +8,10 @@
     <ItemGroup>
       <ProjectReference Include="..\MySpot.Core\MySpot.Core.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="Scrutor" Version="4.2.2" />
+    </ItemGroup>
+
 
 </Project>

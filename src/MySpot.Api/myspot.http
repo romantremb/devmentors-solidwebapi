@@ -1,37 +1,34 @@
 ### Get reservations
-GET {{url}}/reservations
-
-### Get reservation
-GET {{url}}/reservations/00000000-0000-0000-0000-000000000001
+GET {{url}}/parking-spots
 
 ### reserve for vehicle
-POST {{url}}/reservations/vehicle
+POST {{url}}/parking-spots/00000000-0000-0000-0000-000000000001/reservations/vehicle
 Content-Type: application/json
 
 {
   "parkingSpotId": "00000000-0000-0000-0000-000000000001",
-  "date": "2023-08-08",
+  "date": "2023-08-10",
   "employeeName": "Joe Doe",
   "licencePlate": "XYZ123",
   "capacity": 1
 }
 
 ### reserve for cleaning
-POST {{url}}/reservations/cleaning
+POST {{url}}/parking-spots/reservations/cleaning
 Content-Type: application/json
 
 {
-  "date": "2023-08-08"
+  "date": "2023-08-11"
 }
 
 ### edit reservation
-PUT {{url}}/reservations/00000000-0000-0000-0000-000000000001
+PUT {{url}}/parking-spots/reservations/2dbdc86a-e57a-4df7-943a-4532d421137c
 Content-Type: application/json
 
 {
-  "licencePlate": "XYZZ"
+  "licencePlate": "XYZ654"
 }
 
 ### Delete reservation
-DELETE {{url}}/reservations/1
+DELETE {{url}}/parking-spots/reservations/2dbdc86a-e57a-4df7-943a-4532d421137c
 
