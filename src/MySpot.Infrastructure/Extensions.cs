@@ -6,6 +6,7 @@ using MySpot.Application.Abstractions;
 using MySpot.Core.Abstractions;
 using MySpot.Infrastructure.DAL;
 using MySpot.Infrastructure.Exceptions;
+using MySpot.Infrastructure.Logging;
 using MySpot.Infrastructure.Time;
 
 [assembly:InternalsVisibleTo("MySpot.Tests.Unit")]
@@ -20,6 +21,8 @@ public static class Extensions
 
         services.AddSingleton<ExceptionMiddleware>();
         services.AddSingleton<IClock, Clock>();
+
+        services.AddCustomLogging();
         
         var infrastructureAssembly = typeof(ExceptionMiddleware).Assembly;
         services.Scan(s => s.FromAssemblies(infrastructureAssembly)

@@ -32,15 +32,15 @@ internal sealed class PostgresWeeklyParkingSpotRepository : IWeeklyParkingSpotRe
             .Include(x => x.Reservations)
             .SingleOrDefaultAsync(x => x.Id == id);
 
-    public async Task AddAsync(WeeklyParkingSpot weeklyParkingSpot)
+    public Task AddAsync(WeeklyParkingSpot weeklyParkingSpot)
     {
         _weeklyParkingSpots.Add(weeklyParkingSpot);
-        await _dbContext.SaveChangesAsync();
+        return Task.CompletedTask;
     }
 
-    public async Task UpdateAsync(WeeklyParkingSpot weeklyParkingSpot)
+    public Task UpdateAsync(WeeklyParkingSpot weeklyParkingSpot)
     {
         _weeklyParkingSpots.Update(weeklyParkingSpot);
-        await _dbContext.SaveChangesAsync();
+        return Task.CompletedTask;
     }
 }
