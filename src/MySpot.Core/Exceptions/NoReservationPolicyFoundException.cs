@@ -6,8 +6,8 @@ public sealed class NoReservationPolicyFoundException : CustomException
 {
     public JobTitle JobTitle { get; }
 
-    public NoReservationPolicyFoundException(JobTitle jobTitle)
-        : base($"No reservation policy for '{jobTitle}' found")
+    public NoReservationPolicyFoundException(JobTitle jobTitle) 
+        : base($"No reservation policy for {jobTitle} found")
     {
         JobTitle = jobTitle;
     }

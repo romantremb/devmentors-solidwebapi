@@ -7,8 +7,8 @@ Content-Type: application/json
 
 {
   "parkingSpotId": "00000000-0000-0000-0000-000000000001",
-  "date": "2023-08-10",
-  "employeeName": "Joe Doe",
+  "userId": "d7713948-569f-4c3e-b689-d5bda881397f",
+  "date": "2023-08-15",
   "licencePlate": "XYZ123",
   "capacity": 1
 }
@@ -31,4 +31,23 @@ Content-Type: application/json
 
 ### Delete reservation
 DELETE {{url}}/parking-spots/reservations/2dbdc86a-e57a-4df7-943a-4532d421137c
+
+### Sign up
+POST {{url}}/Users
+Content-Type: application/json
+
+{
+  "email": "user1@myspot.io",
+  "username": "user1",
+  "password": "secret",
+  "fullName": "John Doe",
+  "role": "user"
+}
+
+### Get all users
+GET {{url}}/Users
+
+### Get user by Id
+GET {{url}}/Users/d7713948-569f-4c3e-b689-d5bda881397f
+
 

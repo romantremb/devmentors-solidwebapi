@@ -19,6 +19,7 @@ internal static class Extensions
         
         services.AddDbContext<MySpotDbContext>(opts => opts.UseNpgsql(postgresOptions.ConnectionString));
         services.AddScoped<IWeeklyParkingSpotRepository, PostgresWeeklyParkingSpotRepository>();
+        services.AddScoped<IUserRepository, PostgresUserRepository>();
         services.AddHostedService<DatabaseInitializer>();
         services.AddScoped<IUnitOfWork, PostgresUnitOfWork>();
         services.TryDecorate(typeof(ICommandHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));

@@ -12,14 +12,3 @@ public sealed class WeeklyParkingSpotNotFoundException : CustomException
         Id = id;
     }
 }
-
-public sealed class ReservationNotFoundException : CustomException
-{
-    public Guid Id { get; }
-
-    public ReservationNotFoundException(Guid id) 
-        : base("Reservation with ID: {id} wasn't found")
-    {
-        Id = id;
-    }
-}

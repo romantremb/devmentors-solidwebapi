@@ -15,7 +15,7 @@ public class ParkingSpotsController : ControllerBase
         [FromQuery] GetWeeklyParkingSpots query,
         [FromServices] IQueryHandler<GetWeeklyParkingSpots, IEnumerable<WeeklyParkingSpotDto>> handler
         )
-        => Ok(await handler.ExecuteAsync(query));
+        => Ok(await handler.HandleAsync(query));
 
     [HttpPost("{parkingSpotId:guid}/reservations/vehicle")]
     public async Task<ActionResult> Post(Guid parkingSpotId, ReserveParkingSpotForVehicle command,

@@ -13,7 +13,7 @@ internal sealed class GetWeeklyParkingSpotsHandler : IQueryHandler<GetWeeklyPark
     public GetWeeklyParkingSpotsHandler(MySpotDbContext dbContext)
         => _dbContext = dbContext;
     
-    public async Task<IEnumerable<WeeklyParkingSpotDto>> ExecuteAsync(GetWeeklyParkingSpots query)
+    public async Task<IEnumerable<WeeklyParkingSpotDto>> HandleAsync(GetWeeklyParkingSpots query)
     {
         var week = query.Date.HasValue ? new Week(query.Date.Value) : null;
         var weeklyParkingSpots = await _dbContext.WeeklyParkingSpots

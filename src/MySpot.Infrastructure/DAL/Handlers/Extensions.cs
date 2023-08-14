@@ -20,4 +20,12 @@ internal static class Extensions
                 Date = x.Date.Value.Date
             })
         };
+
+    public static UserDto AsDto(this User entity)
+        => new()
+        {
+            Id = entity.Id,
+            Username = entity.Username,
+            Fullname = entity.FullName
+        };
 }

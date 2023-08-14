@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MySpot.Infrastructure.DAL;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MySpot.Infrastructure.DAL.Migrations
 {
     [DbContext(typeof(MySpotDbContext))]
-    partial class MySpotDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230814192042_Users")]
+    partial class Users
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,11 +137,6 @@ namespace MySpot.Infrastructure.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasIndex("UserId");
-
                     b.HasDiscriminator().HasValue("VehicleReservation");
                 });
 
@@ -147,15 +145,6 @@ namespace MySpot.Infrastructure.DAL.Migrations
                     b.HasOne("MySpot.Core.Entities.WeeklyParkingSpot", null)
                         .WithMany("Reservations")
                         .HasForeignKey("WeeklyParkingSpotId");
-                });
-
-            modelBuilder.Entity("MySpot.Core.Entities.VehicleReservation", b =>
-                {
-                    b.HasOne("MySpot.Core.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("MySpot.Core.Entities.WeeklyParkingSpot", b =>
