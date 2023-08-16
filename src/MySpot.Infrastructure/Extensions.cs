@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MySpot.Application.Abstractions;
 using MySpot.Core.Abstractions;
+using MySpot.Infrastructure.Auth;
 using MySpot.Infrastructure.DAL;
 using MySpot.Infrastructure.Exceptions;
 using MySpot.Infrastructure.Logging;
@@ -22,9 +23,11 @@ public static class Extensions
 
         services.AddSingleton<ExceptionMiddleware>();
         services.AddSingleton<IClock, Clock>();
+        services.AddHttpContextAccessor();
 
         services.AddCustomLogging();
         services.AddSecurity();
+        services.AddAuth(configuration);
         
         var infrastructureAssembly = typeof(ExceptionMiddleware).Assembly;
         services.Scan(s => s.FromAssemblies(infrastructureAssembly)
@@ -40,6 +43,8 @@ public static class Extensions
     {
         app.UseMiddleware<ExceptionMiddleware>();
         app.MapControllers();
+        app.UseAuthentication();
+        app.UseAuthorization();
         
         return app;
     } 

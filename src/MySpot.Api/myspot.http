@@ -32,6 +32,18 @@ Content-Type: application/json
 ### Delete reservation
 DELETE {{url}}/parking-spots/reservations/2dbdc86a-e57a-4df7-943a-4532d421137c
 
+### Get all users
+GET {{url}}/Users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNzcxMzk0OC01NjlmLTRjM2UtYjY4OS1kNWJkYTg4MTM5N2YiLCJ1bmlxdWVfbmFtZSI6ImQ3NzEzOTQ4LTU2OWYtNGMzZS1iNjg5LWQ1YmRhODgxMzk3ZiIsImV4cCI6MTY5MjIxNDY1NiwiaXNzIjoibXlzcG90LWlzc3VlciIsImF1ZCI6Im15c3BvdC1hdWRpZW5jZSJ9.PJhJf6PSFFssiH52KpHrAa7GbWcwlfYYRrkFREIfFdE
+
+### Get user by Id
+GET {{url}}/Users/d7713948-569f-4c3e-b689-d5bda881397f
+
+### Get all users
+GET {{url}}/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNzcxMzk0OC01NjlmLTRjM2UtYjY4OS1kNWJkYTg4MTM5N2YiLCJ1bmlxdWVfbmFtZSI6ImQ3NzEzOTQ4LTU2OWYtNGMzZS1iNjg5LWQ1YmRhODgxMzk3ZiIsImV4cCI6MTY5MjIxNDY1NiwiaXNzIjoibXlzcG90LWlzc3VlciIsImF1ZCI6Im15c3BvdC1hdWRpZW5jZSJ9.PJhJf6PSFFssiH52KpHrAa7GbWcwlfYYRrkFREIfFdE
+
+
 ### Sign up
 POST {{url}}/Users
 Content-Type: application/json
@@ -44,10 +56,15 @@ Content-Type: application/json
   "role": "user"
 }
 
-### Get all users
-GET {{url}}/Users
+### Sign in
+POST {{url}}/Users/sign-in
+Content-Type: application/json
 
-### Get user by Id
-GET {{url}}/Users/d7713948-569f-4c3e-b689-d5bda881397f
+{
+  "email": "user1@myspot.io",
+  "password": "secret"
+}
+
+
 
 
