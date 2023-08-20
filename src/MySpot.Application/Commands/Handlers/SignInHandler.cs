@@ -39,7 +39,7 @@ internal sealed class SignInHandler : ICommandHandler<SignIn>
             throw new InvalidCredentialException();
         }
 
-        var jwt = _authenticator.CreateToken(user.Id);
+        var jwt = _authenticator.CreateToken(user.Id, user.Role);
         _tokenStorage.Set(jwt);
     }
 }

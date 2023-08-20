@@ -34,14 +34,15 @@ DELETE {{url}}/parking-spots/reservations/2dbdc86a-e57a-4df7-943a-4532d421137c
 
 ### Get all users
 GET {{url}}/Users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNzcxMzk0OC01NjlmLTRjM2UtYjY4OS1kNWJkYTg4MTM5N2YiLCJ1bmlxdWVfbmFtZSI6ImQ3NzEzOTQ4LTU2OWYtNGMzZS1iNjg5LWQ1YmRhODgxMzk3ZiIsImV4cCI6MTY5MjIxNDY1NiwiaXNzIjoibXlzcG90LWlzc3VlciIsImF1ZCI6Im15c3BvdC1hdWRpZW5jZSJ9.PJhJf6PSFFssiH52KpHrAa7GbWcwlfYYRrkFREIfFdE
+Authorization: Bearer {{jwt}}
 
 ### Get user by Id
 GET {{url}}/Users/d7713948-569f-4c3e-b689-d5bda881397f
+Authorization: Bearer {{jwt}}
 
 ### Get all users
 GET {{url}}/users/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNzcxMzk0OC01NjlmLTRjM2UtYjY4OS1kNWJkYTg4MTM5N2YiLCJ1bmlxdWVfbmFtZSI6ImQ3NzEzOTQ4LTU2OWYtNGMzZS1iNjg5LWQ1YmRhODgxMzk3ZiIsImV4cCI6MTY5MjIxNDY1NiwiaXNzIjoibXlzcG90LWlzc3VlciIsImF1ZCI6Im15c3BvdC1hdWRpZW5jZSJ9.PJhJf6PSFFssiH52KpHrAa7GbWcwlfYYRrkFREIfFdE
+Authorization: Bearer {{jwt}}
 
 
 ### Sign up
@@ -65,6 +66,8 @@ Content-Type: application/json
   "password": "secret"
 }
 
-
+> {%
+    client.global.set("jwt", response.body.accessToken);
+%}
 
 
