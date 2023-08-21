@@ -67,7 +67,7 @@ public class UsersController : ControllerBase
     public async Task<ActionResult> SignUp(SignUp command, [FromServices] ICommandHandler<SignUp> handler)
     {
         await handler.HandleAsync(command with { UserId = Guid.NewGuid() });
-        return NoContent();
+        return CreatedAtAction(nameof(Get), new {command.UserId}, null);
     }
 
     [HttpPost("sign-in")]

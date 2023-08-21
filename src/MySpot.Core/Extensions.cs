@@ -1,6 +1,9 @@
+using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
 using MySpot.Core.DomainServices;
 using MySpot.Core.Policies;
+
+[assembly:InternalsVisibleTo("MySpot.Tests.Unit")]
 
 namespace MySpot.Core;
 

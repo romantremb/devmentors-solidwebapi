@@ -8,10 +8,14 @@
     &lt;TestId&gt;xUnit::2CE0EA12-BA5B-4F5E-9342-23312C9FA84C::net7.0::MySpot.Tests.Unit.Services.ReservationsServiceTests.given_invalid_parking_spot_id_create_should_fail&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::2CE0EA12-BA5B-4F5E-9342-23312C9FA84C::net7.0::MySpot.Tests.Unit.Services.ReservationsServiceTests.given_reservation_for_already_taken_date_create_should_fail&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::2CE0EA12-BA5B-4F5E-9342-23312C9FA84C::net7.0::MySpot.Tests.Unit.Services.ReservationsServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B0B501A2-017D-42C7-9C25-22FC90ED018E::net7.0::MySpot.Tests.Integration.Controllers.UsersController.post_users_should_return_created_201_status_code&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B0B501A2-017D-42C7-9C25-22FC90ED018E::net7.0::MySpot.Tests.Integration.Controllers.UsersController.post_user_sign_in_should_return_ok_200_status_code_and_jwt&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=57eaad2c_002D0837_002D4c05_002Db8dd_002D1aba1ad105f5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ReservationsServiceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::2CE0EA12-BA5B-4F5E-9342-23312C9FA84C::net7.0::MySpot.Tests.Unit.Services.ReservationsServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B0B501A2-017D-42C7-9C25-22FC90ED018E::net7.0::MySpot.Tests.Integration.Controllers.UsersController.post_users_should_return_created_201_status_code&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B0B501A2-017D-42C7-9C25-22FC90ED018E::net7.0::MySpot.Tests.Integration.Controllers.UsersController.post_user_sign_in_should_return_ok_200_status_code_and_jwt&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::B0B501A2-017D-42C7-9C25-22FC90ED018E::net7.0::MySpot.Tests.Integration.Controllers.UsersController.get_users_me_should_return_ok_200_status_code_and_user&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
